@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "2048-clone"
+version = "0.1.0"
+description = "A Clone of 2048 in Python"
+authors = ["lucascolas <lucas.colas13@gmail.com>"]
+readme = "README.md"
+packages = [{include = "2048_clone"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^1.25.2"
+pygame-ce = "^2.3.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
