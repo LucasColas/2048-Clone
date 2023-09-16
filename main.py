@@ -1,11 +1,11 @@
-import pygame 
+import pygame
 import numpy as np
 import sys
 
 from Game.Board import Board
 from Game.game import Game
-pygame.init()
 
+pygame.init()
 
 
 def main():
@@ -15,7 +15,7 @@ def main():
     # screen resolution
     resolution = (570, 720)
     screen = pygame.display.set_mode(resolution)
-    #board = Board(board_size, board_size, board_size, shift, screen)
+    # board = Board(board_size, board_size, board_size, shift, screen)
     game = Game(screen, board_size, shift, screen.get_width(), screen.get_height())
     while True:
         for event in pygame.event.get():

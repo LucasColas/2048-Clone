@@ -10,6 +10,7 @@ packages = [{include = "2048_clone"}]
 python = "^3.11"
 numpy = "^1.25.2"
 pygame-ce = "^2.3.2"
+black = "^23.9.1"
 
 
 [build-system]
