@@ -51,6 +51,13 @@ class Board:
         y = row * cell_height + (row + 1) * self.padding + self.shift
         # print("x: ", x, "y: ", y, "cell_width: ", cell_width, "cell_height: ", cell_height)
         return pygame.Rect(x, y, cell_width, cell_height)
+    
+    def generate_random_value_for_cell(self):
+        empty_cells = np.argwhere(self.board_values == 0)
+        if len(empty_cells) == 0:
+            return
+        random_cell = empty_cells[np.random.randint(0, len(empty_cells))]
+        self.board_values[random_cell[0], random_cell[1]] = 2
 
     def create_cell_rects(self):
         cell_rects = np.zeros((self.board_size, self.board_size), dtype=pygame.Rect)
