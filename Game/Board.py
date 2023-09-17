@@ -67,6 +67,42 @@ class Board:
 
         return cell_rects
 
+    def move_up(self):
+        """
+        
+        Move every value to the top of the board.
+        Stop moving when there's a value or the end of the board.
+        If there's a value, check if it's equal to the current value.
+        If it is, merge them.
+        
+        """
+
+        for col in range(self.board_size):
+            for row in range(self.board_size):
+                # Shift up each value until we hit a value or the end of the board
+                if self.board_values[row, col] == 0:
+                    continue
+                current_val = self.board_values[row, col]
+                current_row = row
+                while current_row > 0 and self.board_values[current_row-1, col] == 0:
+                    current_row -= 1
+                if current_row != row:
+                    self.board_values[current_row, col] = current_val
+                    self.board_values[row, col] = 0
+        
+        # Merge values if they're equal
+
+        for col in range(self.board_size):
+            merged_values = np.zeros(self.board_size, dtype=bool)
+            for row in range(self.board_size - 1):
+                if self.board_values[row, col] == self.board_values[row+1, col] and not merged_values[row] and not merged_values[row+1]:
+                    self.board_values[row, col] *= 2
+                    self.board_values[row+1, col] = 0
+                    merged_values[row] = True
+                    merged_values[row+1] = True
+                
+                
+
     def draw_board(self):
         self.screen.fill(self.blank_color)
         for row in range(self.board_size):
