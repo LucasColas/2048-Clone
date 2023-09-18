@@ -33,6 +33,10 @@ class Game:
         self.top_bar = TopBar(self.screen)
         self.start = False
 
+    @property
+    def board(self):
+        return self._board
+
     def start_game(self):
         self._board = Board(
             self.board_size,
