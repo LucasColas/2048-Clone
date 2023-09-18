@@ -57,7 +57,11 @@ class Board:
         if len(empty_cells) == 0:
             return
         random_cell = empty_cells[np.random.randint(0, len(empty_cells))]
-        self.board_values[random_cell[0], random_cell[1]] = 2
+
+        # select 2 or 4 with 90% and 10% probability
+        self.board_values[random_cell[0], random_cell[1]] = np.random.choice(
+            [2, 4], p=[0.9, 0.1]
+        )
 
     def create_cell_rects(self):
         cell_rects = np.zeros((self.board_size, self.board_size), dtype=pygame.Rect)

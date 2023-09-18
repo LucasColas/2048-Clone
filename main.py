@@ -23,6 +23,22 @@ def main():
                 pygame.quit()
                 sys.exit()  # Exit the program when the window is closed
 
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    game.board.move_left()
+                if event.key == pygame.K_RIGHT:
+                    game.board.move_right()
+                if event.key == pygame.K_UP:
+                    game.board.move_up()
+                if event.key == pygame.K_DOWN:
+                    game.board.move_down()
+                if event.key == pygame.K_r:
+                    game.start_game()
+
+                # Start game with 
+                if event.key == pygame.K_SPACE and not game.start:
+                    game.start_game()
+
         game.update_window()
 
 

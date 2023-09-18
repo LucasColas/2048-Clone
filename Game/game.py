@@ -23,7 +23,7 @@ class Game:
         self.screen = screen
         self.board_width = self.width
         self.board_height = self.height - shift
-        self.board = Board(
+        self._board = Board(
             self.board_size,
             self.board_width,
             self.board_height,
@@ -31,8 +31,28 @@ class Game:
             self.screen,
         )
         self.top_bar = TopBar(self.screen)
+        self.start = False
+
+    def start_game(self):
+        self._board = Board(
+            self.board_size,
+            self.board_width,
+            self.board_height,
+            self.shift,
+            self.screen,
+        )
+        self._board.generate_random_value_for_cell()
+        self._board.generate_random_value_for_cell()
+        self.start = True
+
+    def reset_game(self):
+        self.start = False
+
+    
 
     def update_window(self):
-        self.board.draw_board()
+        self._board.draw_board()
         # self.top_bar.draw_top_bar()
         pygame.display.update()
+
+    
