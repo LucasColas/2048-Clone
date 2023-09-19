@@ -208,6 +208,8 @@ class Board:
                     merged_values[col] = True
                     merged_values[col-1] = True
                 
+    def is_game_over(self):
+        return np.count_nonzero(self.board_values) == self.board_size ** 2
                 
 
     def draw_board(self):

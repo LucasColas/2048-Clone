@@ -52,6 +52,9 @@ class Game:
     def reset_game(self):
         self.start = False
 
+    def is_game_over(self):
+        return self._board.is_game_over()
+
     
 
     def update_window(self):
