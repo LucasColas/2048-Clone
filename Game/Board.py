@@ -209,7 +209,42 @@ class Board:
                     merged_values[col-1] = True
                 
     def is_game_over(self):
-        return np.count_nonzero(self.board_values) == self.board_size ** 2
+
+        if np.count_nonzero(self.board_values) == self.board_size ** 2:
+            # Check if no values can be merged
+            # Check if two adjacent values are equal
+
+            # Check left neighbors
+            left_neighbors = np.roll(self.board_values, 1, axis=1)
+            left_equal = (self.board_values == left_neighbors)
+
+            # Check right neighbors
+            right_neighbors = np.roll(self.board_values, -1, axis=1)
+            right_equal = (self.board_values == right_neighbors)
+
+            # Check up neighbors
+            up_neighbors = np.roll(self.board_values, 1, axis=0)
+            up_equal = (self.board_values == up_neighbors)
+
+            # Check down neighbors
+            down_neighbors = np.roll(self.board_values, -1, axis=0)
+            down_equal = (self.board_values == down_neighbors)
+
+            # Combine all neighbor checks
+            all_equal_neighbors = left_equal | right_equal | up_equal | down_equal
+
+            # Create a mask to exclude diagonal neighbors
+            diagonal_mask = np.eye(self.board_values.shape[0], self.board_values.shape[1], dtype=bool)
+
+            # Apply the diagonal mask
+            all_equal_neighbors &= ~diagonal_mask
+
+            # Find the coordinates of elements with equal adjacent neighbors
+            if np.any(all_equal_neighbors):
+                return False
+            return True
+        
+        return False
                 
 
     def draw_board(self):
