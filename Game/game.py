@@ -30,7 +30,7 @@ class Game:
             self.shift,
             self.screen,
         )
-        self.top_bar = TopBar(self.screen)
+        self._top_bar = TopBar(self.screen, self.shift)
         self.start = False
 
     @property
@@ -55,11 +55,8 @@ class Game:
     def is_game_over(self):
         return self._board.is_game_over()
 
-    
-
     def update_window(self):
+        self.is_game_over()
         self._board.draw_board()
-        # self.top_bar.draw_top_bar()
+        self._top_bar.draw_top_bar(self._board.score)
         pygame.display.update()
-
-    
