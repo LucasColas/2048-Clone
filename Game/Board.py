@@ -349,7 +349,7 @@ class Board:
                     self.cell_rects[row, col],
                 )
                 if self.board_values[row, col] != 0:
-                    font = pygame.font.SysFont("Arial", 65, bold=True)
+                    font = pygame.font.SysFont("Arial", 65)
                     text = font.render(
                         str(self.board_values[row, col]),
                         True,
