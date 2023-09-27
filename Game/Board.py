@@ -319,23 +319,25 @@ class Board:
         self.generate_random_value_for_cell()
 
     def is_game_over(self):
-        #print("Nonzero val : ", np.count_nonzero(self.board_values))
+        # print("Nonzero val : ", np.count_nonzero(self.board_values))
         if np.count_nonzero(self.board_values) == self.board_size**2:
             # Check if no values can be merged
             # Check if two adjacent values are equal. Exclude diagonals. Numpy methods only
 
-            
-            rows_equal = np.any(self.board_values[:, :-1] == self.board_values[:, 1:], axis=1)
+            rows_equal = np.any(
+                self.board_values[:, :-1] == self.board_values[:, 1:], axis=1
+            )
 
             # Check columns for adjacent equal values
-            cols_equal = np.any(self.board_values[:-1, :] == self.board_values[1:, :], axis=0)
+            cols_equal = np.any(
+                self.board_values[:-1, :] == self.board_values[1:, :], axis=0
+            )
 
             if np.any(rows_equal) or np.any(cols_equal):
                 return False
-            
+
             print("Game Over")
             return True
-            
 
         return False
 

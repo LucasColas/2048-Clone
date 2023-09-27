@@ -32,7 +32,6 @@ def main():
                     game.board.move_up()
                 if event.key == pygame.K_DOWN and game.start:
                     game.board.move_down()
-                
 
                 # Start game with
                 if event.key == pygame.K_SPACE and not game.start:
