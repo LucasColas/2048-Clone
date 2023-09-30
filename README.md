@@ -4,4 +4,4 @@ I'm still working on it.
 
 Sneak peek :
 
-<img src="https://github.com/LucasColas/2048-Clone/blob/main/assets-repo/Screenshot-version-one.png" width=50% height=50%>
+<img src="https://github.com/LucasColas/2048-Clone/blob/main/assets-repo/screenshot-2.png" width=50% height=50%>
