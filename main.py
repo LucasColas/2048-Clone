@@ -24,18 +24,20 @@ def main():
                 sys.exit()  # Exit the program when the window is closed
 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT and game.start:
+                if event.key == pygame.K_LEFT and game.start and not game.board.game_over:
                     game.board.move_left()
-                if event.key == pygame.K_RIGHT and game.start:
+                if event.key == pygame.K_RIGHT and game.start and not game.board.game_over:
                     game.board.move_right()
-                if event.key == pygame.K_UP and game.start:
+                if event.key == pygame.K_UP and game.start and not game.board.game_over:
                     game.board.move_up()
-                if event.key == pygame.K_DOWN and game.start:
+                if event.key == pygame.K_DOWN and game.start and not game.board.game_over:
                     game.board.move_down()
 
                 # Start game with
                 if event.key == pygame.K_SPACE and not game.start:
                     game.start_game()
+
+                
 
         game.update_window()
 

@@ -52,11 +52,16 @@ class Game:
     def reset_game(self):
         self.start = False
 
+
     def is_game_over(self):
         return self._board.is_game_over()
 
     def update_window(self):
-        self.is_game_over()
+        
         self._board.draw_board()
         self._top_bar.draw_top_bar(self._board.score)
+        if self._board.game_over:
+            self.start = False
+            self._board.draw_game_over()
+            
         pygame.display.update()

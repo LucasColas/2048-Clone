@@ -51,10 +51,15 @@ class Board:
         }
         self.blank_color = (184, 174, 161)
         self.cell_rects = self.create_cell_rects()
+        self._game_over = False
 
     @property
     def score(self):
         return self._score
+    
+    @property
+    def game_over(self):
+        return self._game_over
 
     def create_Rect(self, row: int, col: int):
         cell_width = (
@@ -141,6 +146,7 @@ class Board:
                     self.board_values[row, col] = 0
 
         self.generate_random_value_for_cell()
+        self._game_over = self.is_game_over()
 
     def move_down(self):
         """
@@ -202,6 +208,7 @@ class Board:
                     self.board_values[row, col] = 0
 
         self.generate_random_value_for_cell()
+        self._game_over = self.is_game_over()
 
     def move_left(self):
         """
@@ -256,6 +263,7 @@ class Board:
                     self.board_values[row, current_col] = current_val
                     self.board_values[row, col] = 0
         self.generate_random_value_for_cell()
+        self._game_over = self.is_game_over()
 
     def move_right(self):
         """
@@ -317,6 +325,7 @@ class Board:
                     self.board_values[row, col] = 0
 
         self.generate_random_value_for_cell()
+        self._game_over = self.is_game_over()
 
     def is_game_over(self):
         # print("Nonzero val : ", np.count_nonzero(self.board_values))
@@ -361,3 +370,10 @@ class Board:
                     self.screen.blit(text, text_rect)
 
         # pygame.display.update()
+
+
+    def draw_game_over(self):
+        font = pygame.font.SysFont("Arial", 65)
+        text = font.render("Game Over", True, (255, 255, 255))
+        text_rect = text.get_rect(center=(self.board_width // 2, self.board_height // 2))
+        self.screen.blit(text, text_rect)
