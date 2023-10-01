@@ -21,6 +21,7 @@ class Board:
         self.padding = 0.02 * self.board_width
         self.nb_padding = self.board_size + 1
         # print("padding: ", self.padding)
+        
         self.board_values = np.zeros((self.board_size, self.board_size), dtype=int)
         self.cell_colors = {
             0: (205, 193, 180),
