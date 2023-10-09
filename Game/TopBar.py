@@ -5,12 +5,13 @@ class TopBar:
     def __init__(self, screen: pygame.Surface, shift: int, x: int = 0, y: int = 0):
         self.screen = screen
         self.shift = shift
-        self.top_bar = pygame.Surface((self.screen.get_width(), shift))
-        self.top_bar.fill((255, 255, 255))
-        self.screen.blit(self.top_bar, (0, 0))
-
         self.x = x
         self.y = y
+        self.top_bar = pygame.Surface((self.screen.get_width(), shift))
+        self.top_bar.fill((255, 255, 255))
+        self.screen.blit(self.top_bar, (self.x, self.y))
+
+        
         # self.score = 0
         self.best_score = 0
 

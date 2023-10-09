@@ -104,6 +104,8 @@ class Board:
 
         """
 
+
+
         for col in range(self.board_size):
             for row in range(self.board_size):
                 # Shift up each value until we hit a value or the end of the board
@@ -220,7 +222,7 @@ class Board:
         If it is, merge them.
 
         """
-
+        
         for row in range(self.board_size):
             for col in range(self.board_size):
                 # Shift left each value until we hit a value or the end of the board
